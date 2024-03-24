@@ -10,7 +10,7 @@ exports.handler = async (event) => {
             statusCode: 400,
             body: JSON.stringify({ message: 'userId is required' }),
             headers: {
-                "Access-Control-Allow-Origin": "purepoker.world"
+                "Access-Control-Allow-Origin": "*"
             }
         };
     }
@@ -30,7 +30,7 @@ exports.handler = async (event) => {
             statusCode: 200,
             body: JSON.stringify(queryResult.Items),
             headers: {
-                "Access-Control-Allow-Origin": "purepoker.world"
+                "Access-Control-Allow-Origin": "*"
             }
         };
     } catch (err) {
@@ -39,7 +39,7 @@ exports.handler = async (event) => {
             statusCode: 500,
             body: JSON.stringify({ message: 'Failed to fetch user groups' }),
             headers: {
-                "Access-Control-Allow-Origin": "purepoker.world"
+                "Access-Control-Allow-Origin": "*"
             }
         };
     }
