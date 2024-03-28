@@ -8,7 +8,7 @@ exports.handler = async (event) => {
     const headerTemplate = {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "OPTIONS,POST"
+        "Access-Control-Allow-Methods": "OPTIONS,GET"
     };
 
     if (!userId) {
