@@ -4,9 +4,10 @@ const groupsTableName = process.env.GROUPS_TABLE;
 
 exports.handler = async (event) => {
     const userId = event.queryStringParameters.userId;
+    const requestOrigin = event.headers.origin;
 
     const headerTemplate = {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": requestOrigin,
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "OPTIONS,GET"
     };
