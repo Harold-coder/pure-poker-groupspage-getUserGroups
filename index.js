@@ -5,13 +5,17 @@ const groupsTableName = process.env.GROUPS_TABLE;
 exports.handler = async (event) => {
     const userId = event.queryStringParameters.userId;
 
+    const headerTemplate = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "OPTIONS,POST"
+    };
+
     if (!userId) {
         return {
             statusCode: 400,
             body: JSON.stringify({ message: 'userId is required' }),
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            }
+            headers: headerTemplate
         };
     }
 
@@ -29,18 +33,14 @@ exports.handler = async (event) => {
         return {
             statusCode: 200,
             body: JSON.stringify(queryResult.Items),
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            }
+            headers: headerTemplate
         };
     } catch (err) {
         console.error('Error fetching user groups:', err);
         return {
             statusCode: 500,
             body: JSON.stringify({ message: 'Failed to fetch user groups' }),
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            }
+            headers: headerTemplate
         };
     }
 };
